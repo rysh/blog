@@ -1,8 +1,8 @@
 --- 
 title: "The Origami Architecture"
 date: 2020-12-03T09:57:28+09:00
-Description: "The Origami Architecture - Nudge to improve the design of domain logic - "
-Tags: ['software architecture,'agile software development','refactoring','emergent design']
+Description: "The Origami Architecture - Nudge to improve the design of domain logic -" 
+Tags: ['software architecture','agile software development','refactoring','emergent design']
 Categories: ['software architecture']
 DisableComments: false
 ---
