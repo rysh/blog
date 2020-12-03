@@ -6,7 +6,7 @@ theme = "anatole"
 summarylength = 10
 enableEmoji = true
 enableRobotsTXT = true
-googleAnalytics = "G-81V1G7GCTH"
+# googleAnalytics = "" #古いanalytics.jsが使われているため機能しない。gtag.jsをhead.htmlに直接いれてある。
 
 
 [params]
@@ -20,7 +20,6 @@ customCss = []
 customJs = []
 mainSections = ["post"]
 images = ["images/site-feature-image.png"]
-googleAnalytics = "G-81V1G7GCTH"
 
 ## Math settings
 [params.math]
