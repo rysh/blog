@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "http://dreamy-edison-e6241d.netlify.app/"
 languageCode = "en"
 DefaultContentLanguage = "en"
 title = "rysh's blog"
