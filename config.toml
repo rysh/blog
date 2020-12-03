@@ -1,4 +1,4 @@
-baseURL = "http://blog.rysh.tech/"
+baseURL = "blog.rysh.tech/"
 languageCode = "en"
 DefaultContentLanguage = "en"
 title = "rysh's blog"
