@@ -12,13 +12,14 @@ enableRobotsTXT = true
 title = "rysh's blog"
 author = "Ishibashi Ryuhei"
 description = "Expert at Refactoring"
-profilePicture = "images/profile.png"
+profilePicture = "images/profile.pngf"
 keywords = ""
 favicon = "favicons/"
 customCss = []
 customJs = []
 mainSections = ["post"]
 images = ["images/site-feature-image.png"]
+googleAnalytics = "G-81V1G7GCTH"
 
 ## Math settings
 [params.math]
