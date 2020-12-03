@@ -6,6 +6,7 @@ theme = "anatole"
 summarylength = 10
 enableEmoji = true
 enableRobotsTXT = true
+googleAnalytics = "G-81V1G7GCTH"
 
 
 [params]
