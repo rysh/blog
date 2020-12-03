@@ -25,16 +25,16 @@ We can grasp every program as a three-dimensional graph structure with processes
 Unfortunately, the diagrams I'm going to use to explain this is a two-dimensional figure, but I'd like you to imagine it as a three-dimensional figure if possible.
 
 
-Figure 1 is an ordinary program with side effects scattered throughout the graph. Think of the side effects as access to external resources. The side-effects are often dependent on the abstraction using Dependency Injection to isolate the implementation, and we can replace them. But there is no reference transparency here.
+Figure 1 is an ordinary program with side effects scattered throughout the graph. Think of these side effects as access to external resources. The side-effects are often dependent on the abstraction using Dependency Injection to isolate the implementation, and we can replace them. But there is no referencial transparency here.
 
 ![program with side effects](/images/the-origami-architecture/origami_01.png)
 
 
-So, we widen the area that guarantees reference transparency as much as possible. We divide it into two parts: one describing with side-effects and the other reference-transparent. And we minimize junctions between reference-transparent and non-reference-transparent regions. (Figure 2)
+So, we widen the area that guarantees referencial transparency as much as possible. We divide it into two parts: one describing with side-effects and the other reference-transparent. And we minimize junctions between reference-transparent and non-reference-transparent regions. (Figure 2)
 
 ![arranged program](/images/the-origami-architecture/origami_02.png)
 
-The part that does not have reference transparency is the infrastructure layer in Hexagonal Architecture or The Clean Architecture. The area where there is reference transparency goes to the domain layer. (Figure 3)
+The part that does not have referencial transparency is the infrastructure layer in Hexagonal Architecture or The Clean Architecture. The area where there is referencial transparency goes to the domain layer. (Figure 3)
 
 ![layered program](/images/the-origami-architecture/origami_03.png)
 
@@ -44,9 +44,9 @@ The junction is the Application layer, and the infrastructure-independent refere
 
 ### How to Construct
 
-Since the essential parts are the same as those of hexagonal and clean architectures, the following two points are crucial. To make domains clean to separate it from external dependencies. Applications are available from various UIs, and we can also switch external resources.
+Since the essential parts are the same as those of hexagonal and clean architectures, the following two points are crucial. To make domains cleaner to separate it from external dependencies. Applications are available from various UIs, and we can also switch external resources.
 
-The two architectures above do not mention that we should or should not use DI for layer separation. In the Clean Architecture book, you can find some diagrams that seem to assume DI's use. In the Japanese Java and Scala communities around me, DI appears to be the most common way to separate layers. However, there are some problems with it. The first is the loss of reference transparency. Secondly, it reduces testability. Third, the dependencies are separated at compile time but dependent at run time. Fourth, even if the implementation is separated, the concepts and types represented by the model are tightly coupled and not loosely coupled. To avoid these problems, I use constructor injection instead of DI Container.Then, by using constructor injection without DI, domains gain the property of reference transparency.
+The two architectures above do not mention that we should or should not use DI for layer separation. In the Clean Architecture book, you can find some diagrams that seem to assume DI's use. In the Java and Scala Japanese communities around me, DI appears to be the most common way to separate layers. However, there are some problems with it. The first is the loss of referencial transparency. Second is that it reduces testability. Third, the dependencies are separated at compile time but dependent at run time. Fourth, even if the implementation is separated, the concepts and types represented by the model are tightly coupled and not loosely coupled. To avoid these problems, I use constructor injection instead of DI Container.Then, by using constructor injection without DI, domains gain the property of referencial transparency.
 
 Figure 5 and 6 shows the difference between the case of using DI Container and the case of using constructor injection in a sequence diagram.
 
@@ -55,11 +55,11 @@ Figure 5 and 6 shows the difference between the case of using DI Container and t
 
 #### Application Layer
 
-The Application layer is the boundary between the side-effects and the non-side-effects part. The Application layer does not do any processing with side effects, but it loses reference transparency because of side-effects in the infrastructure layer called. I prefer to manage concurrency and transactions here.
+The Application layer is the boundary between the side-effects and the non-side-effects part. The Application layer does not do any processing with side effects, but it loses referencial transparency because of side-effects called in the infrastructure layer. I prefer to manage concurrency and transactions here.
 
 #### Domain Layer
 
-Domains must have reference transparency properties. Plain Old Objects pattern is also good. To ensure the elimination of external dependencies, you can restrict the direction of dependencies by dividing the project. Separating the application layer and the infrastructure layer is fine if there is a rational reason to do so, but I don't feel much needed to do so.
+Domains must have referencial transparency properties. Plain Old Objects pattern is also good. To ensure the elimination of external dependencies, you can restrict the direction of dependencies by dividing the project. Separating the application layer and the infrastructure layer is fine if there is a rational reason to do so, but I don't feel much need to do so.
 
 #### Usecase
 The application layer of Hexagonal Architecture and the use case layer of The Clean Architecture are in a similar position, but I think they are two different things. The application belongs to the infrastructure layer, and the use cases belong to the domain layer.
@@ -79,7 +79,7 @@ This effect of The Origami Architecture is a concrete and reproducible method of
 
 #### Relationship of DI and testability
 
-I will explain the difference between using DI and using constructor injection for unit tests. In unit testing, we typically pass input data to the Logic to be tested and assert the output; if we use DI and there is no reference transparency, we must also handle test spies and test stubs (Figure 8). In real-world development, we often spent most of the testing effort creating test spies and test stubs using mock libraries.
+I will explain the difference between using DI and using constructor injection for unit tests. In unit testing, we typically pass input data to the Logic to be tested and assert the output; if we use DI and there is no referencial transparency, we must also handle test spies and test stubs (Figure 8). In real-world development, we often spent most of the testing effort creating test spies and test stubs using mock libraries.
 
 ![UT with DI](/images/the-origami-architecture/origami_08.png)
 
@@ -88,13 +88,13 @@ We no longer need to use test spies and test stubs because we used constructor i
 
 ![UT with Constructor Injection](/images/the-origami-architecture/origami_09.png)
 
-Generally speaking, unit tests are more effective and easier to maintain when you have meaningful, granular, and MECE test cases. When you have nested logics, as in Figure 10, reference transparency gives you the freedom to choose where to create your tests without worrying about the efforts increasing.
+Generally speaking, unit tests are more effective and easier to maintain when you have meaningful, granular, and MECE test cases. When you have nested logics, as in Figure 10, referencial transparency gives you the freedom to choose where to create your tests without worrying about the efforts increasing.
 
 ![Nested Logic](/images/the-origami-architecture/origami_10.png)
 
 In a program with mixed side effects, test spies and test stubs change with each other as you change the test position, and the effort to deal with mock libraries increases significantly. Therefore, such tests are left unmaintained properly and doomed to become technical debts.
 
-Programs with reference transparency are also suitable for testing with random data. We can also use the technique to test refactored programs using outputs of executed programs before the change with random data at the time of refactoring.
+Programs with referencial transparency are also suitable for testing with random data. We can also use the technique to test refactored programs using outputs of executed programs before the change with random data at the time of refactoring.
 
 #### Increase the ease of change
 
