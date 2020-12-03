@@ -1,11 +1,12 @@
----
+--- 
 title: "The Origami Architecture"
-date: "2020-12-03T09:57:28+09:00"
+date: 2020-12-03T09:57:28+09:00
 Description: "The Origami Architecture - Nudge to improve the design of domain logic - "
 Tags: ['software architecture,'agile software development','refactoring','emergent design']
 Categories: ['software architecture']
 DisableComments: false
 ---
+
 I have been applying Hexagonal Architecture and The Clean Architecture to my work for the past few years. Over time, I found a pattern that produced some significant effects that were not present in the original ones. I called it a kind of clean architecture for a while, but since the differences have become so large that it's hard to communicate verbally easily, I decided to give it a name and explain it.
 
 This architecture can coexist with its two predecessor architectures, and its features can be obtained intact with the following new benefits.
