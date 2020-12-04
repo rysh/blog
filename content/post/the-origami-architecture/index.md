@@ -2,7 +2,7 @@
 title: "The Origami Architecture"
 date: 2020-12-03T09:57:28+09:00
 Description: "The Origami Architecture - Nudge to improve the design of domain logic -" 
-Tags: ['software architecture','agile software development','refactoring','emergent design']
+Tags: ['software architecture','agile software development','refactoring','emergent design','unit test']
 Categories: ['software architecture']
 DisableComments: false
 ---
@@ -54,6 +54,8 @@ Figure 5 and 6 shows the difference between the case of using DI Container and t
 ![Use DI](./origami_05.png)
 ![Use Constructor Injection](./origami_06.png)
 
+I will not go into the pros and cons of the use of the DI Container itself, as this is not the purpose of this post.
+
 #### Application Layer
 
 The Application layer is the boundary between the side-effects and the non-side-effects part. The Application layer does not do any processing with side effects, but it loses referencial transparency because of side-effects called in the infrastructure layer. I prefer to manage concurrency and transactions here.
@@ -74,7 +76,7 @@ It mainly appears in the application layer. In fetching all the data and generat
 
 However, organizing the side-effects into a bent structure, data clumps are formed when the dependent data passes through the bent part (the Application layer). The pattern of appearance of data clumps becomes a signal to improve models. This effect automatically works if we refactor normally without enforcing coding rules, reviews checklists, etc.
 
-Of course, the refactoring alone does not complete a great model, and to mature the model, it needs to be repeatedly analyzed, abstracted, and reconfigured. But code smells are clear signals of the need for redesign and a trigger to begin to consider redesigning. Although it has been said for many years that repeated analysis and refactoring is an integral part of creating good software, only few organizations are able to do so. Because most of them don't have enough resources to find out what to improve and when to do it. If improvement is not part of the business process, even if individual developers find improvement points, they will be put on the back burner and forgotten in the priority of other projects. Therefore, triggers must occur continuously in a specific place, and if they are known, we should incorporate them into the process.
+Of course, the refactoring alone does not complete a great model, and to mature the model, it needs to be repeatedly analyzed, abstracted, and reconfigured. But code smells are clear signals of the need for redesign and a trigger to begin to consider redesigning. Although it has been said for many years that repeated analysis and refactoring is an integral part of creating good software, only few organizations are able to do so. Because most of them don't have enough resources to find out what to improve and when to do it. If improvement is not part of the business process, even if one developers find improvement points, they will be put on the back burner and forgotten in the priority of other projects. Therefore, triggers must occur continuously in a specific place, and if they are known, we can and should incorporate them into the process.
 
 This effect of The Origami Architecture is a concrete and reproducible method of emergent design that is often mentioned in agile development.
 
