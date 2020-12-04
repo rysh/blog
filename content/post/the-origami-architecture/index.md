@@ -7,9 +7,7 @@ Categories: ['software architecture']
 DisableComments: false
 ---
 
-![a origami of a dragon](./origami_of_dragon.png)
-
-I have been applying [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_¥(software¥)) and [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) to my work for the past few years. Over time, I found a [pattern](https://en.wikipedia.org/wiki/Software_design_pattern "software design pattern") that produced some significant effects that were not present in the original ones. For a while, I called it a kind of clean architecture, but since the differences have become so large that it's hard to communicate verbally easily, I decided to give it a name and explain it.
+I have been applying [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_¥(software¥)) and [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) to my work for the past few years. Over time, I found a [pattern](https://en.wikipedia.org/wiki/Software_design_pattern "software design pattern") that produced some significant effects that were not present in the original ones. I called it a kind of clean architecture for a while, , but since the differences have become so large that it's hard to communicate verbally easily, I decided to give it a name and explain it.
 
 This architecture can coexist with its two predecessor architectures, and its features can be obtained intact with the following new benefits.
 
@@ -25,24 +23,24 @@ In the following text, I will first tell you the concept of this architecture, s
 
 We can grasp every program as a three-dimensional graph structure with processes as nodes. Architecture is a pattern of it. In the system, processes, which are nodes, can be organized in appropriate positions according to their properties. A similar example is the structure of a protein composed of several elements.
 
-Unfortunately, the diagrams I'm going to use to explain this are two-dimensional figures, but I'd like you to imagine it as three-dimensional figures if possible.
+Unfortunately, the diagrams I'm going to use to explain this are two-dimensional figures, but I'd like you to imagine them as three-dimensional figures if possible.
 
 
-Figure 1 is an ordinary program with side effects scattered throughout the graph. Think of these [side effects](https://en.wikipedia.org/wiki/Side_effect_¥(computer_science¥) "side effects in computer science") as access to external resources. The side-effects are often dependent on the abstraction using [IoC Container](https://en.wikipedia.org/wiki/Dependency_injection "Dependency Injection") and sometimes isolated from the implementation according to [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle "Dependency Inversion Principle in SOLID Principles")(In this post, I dare to use IoC Container and DI Container differently, because constructor injection is [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) but not Inversion of Control.), and we can replace them. But there is no [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency "referential transparency in functional programming") here.
+Figure 1 is an ordinary program with side effects scattered throughout the graph. Think of these [side effects](https://en.wikipedia.org/wiki/Side_effect_¥(computer_science¥) "side effects in computer science") as access to external resources. The side-effects are often dependent on the abstraction using [IoC Container](https://en.wikipedia.org/wiki/Dependency_injection "Dependency Injection") and sometimes isolated from the implementation according to [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle "Dependency Inversion Principle in SOLID Principles")[^a], and we can replace them. But there is no [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency "referential transparency in functional programming") here.
 
-![program with side effects](./origami_01.png)
+{{< imgproc origami_01.png Fit "480x400" "alt='program with side effects'" ""/>}}
 
 So, we widen the area that guarantees referential transparency as much as possible. We divide it into two parts: one describing with side-effects and the other with referential transparency. And we minimize junctions between reference-transparent and non-reference-transparent regions. (Figure 2)
 
-![arranged program](./origami_02.png)
+{{< imgproc origami_02.png Fit "480x400" "alt='arranged program'" ""/>}}
 
 The part that does not have referential transparency is the Adaptor in Hexagonal Architecture or the infrastructure layer of The Clean Architecture. The area with referential transparency goes to the Application in Hexagonal Architecture or the domain layer of The Clean Architecture. (Figure 3)
 
-![layered program](./origami_03.png)
+{{< imgproc origami_03.png Fit "480x400" "alt='layered program'" ""/>}}
 
 So, the junction is the Application layer, and the infrastructure-independent part with referential transparecy is the domain logic. (Figure 4)
 
-![with application](./origami_04.png)
+{{< imgproc origami_04.png Fit "480x400" "alt='with application'" ""/>}}
 
 ### How to Construct
 
@@ -59,8 +57,8 @@ Then, by using constructor injection without IoC Container, domains gain the pro
 
 Figure 5 and 6 shows the difference between the case of using IoC Container and the case of using constructor injection in a sequence diagram.
 
-![Use IoC Container](./origami_05.png)
-![Use Constructor Injection](./origami_06.png)
+{{< imgproc origami_05.png Fit "480x400" "alt='Use IoC Container'" ""/>}}
+{{< imgproc origami_06.png Fit "480x400" "alt='Use Constructor Injection'" ""/>}}
 
 I will not address the pros and cons of the use of the IoC Container itself, as this is not the purpose of this post.
 
@@ -80,7 +78,7 @@ Extracting the port part from the application of hexagonal architecture would be
 
 It mainly appears in the application layer. In fetching all the data and generating the domain objects, code smells of Data Clumps (Martin Fowler's Refactoring) occur when the model is not mature enough. Refactoring them, models mature. It is usually tough to find such a connection, even if there are two positively related and frequently used models in two parts of the graph at the same time (Figure 7). 
 
-![interactions in ordinary program](./origami_07.png)
+{{< imgproc origami_07.png Fit "480x400" "alt='interactions in ordinary program'" ""/>}}
 
 However, organizing the side-effects into a bent structure, data clumps are formed when the dependent data passes through the bent part (the Application layer). The pattern of appearance of data clumps becomes a signal to improve models. This effect automatically works if we refactor normally without enforcing coding rules, reviews checklists, etc.
 
@@ -92,16 +90,16 @@ This effect of The Origami Architecture is a concrete and reproducible method of
 
 I will explain the difference between using IoC Container and using constructor injection for unit tests. In unit testing, we typically pass input data to the Logic to be tested and assert the output; if we use IoC Container and there is no referential transparency, we must also handle [test spies](https://en.wikipedia.org/wiki/Test_double#Types_of_test_doubles "test spy, a kind of test double") and [test stubs](https://en.wikipedia.org/wiki/Test_stub "test stub, a kind of test double") (Figure 8). In real-world development, we often spent most of the testing effort creating test spies and test stubs using mock libraries.
 
-![UT with IoC Container](./origami_08.png)
+{{< imgproc origami_08.png Fit "480x400" "alt='UT with IoC Container'" ""/>}}
 
 
 We no longer need to use test spies and test stubs because we used constructor injection. (Figure 9)
 
-![UT with Constructor Injection](./origami_09.png)
+{{< imgproc origami_09.png Fit "480x400" "alt='UT with Constructor Injection'" ""/>}}
 
-Generally speaking, unit tests are more effective and easier to maintain when you have meaningful, granular, and MECE test cases. When you have nested logics, as in Figure 10, referential transparency gives you the freedom to choose where to create your tests without worrying about the increasing efforts.
+Unit tests are more effective and easier to maintain when you write meaningful, granular, and MECE test cases. When you have nested logics, as in Figure 10, referential transparency gives you the freedom to choose where to create your tests without worrying about the increasing efforts.
 
-![Nested Logic](./origami_10.png)
+{{< imgproc origami_10.png Fit "480x400" "alt='Nested Logic'" ""/>}}
 
 In a program with mixed side effects, test spies and test stubs change with each other as you change the test position, and the effort to deal with mock libraries increases significantly. Therefore, such tests are left unmaintained properly and doomed to become technical debts.
 
@@ -119,3 +117,8 @@ If the concurrency in a program is scattered across several locations, it is dif
 ### Conclusion
 
 I named The Origami Architecture from the idea of viewing a program as a three-dimensional graph structure and fold it. I believe that this method has the potential to be used by many people because it can create a significant effect with small rules, is not dependent on a language or framework, and can be used in parts. I will be pleased if this blog post has helped someone, even in part. Please feel free to give me feedback if you feel any way about it.
+
+
+
+[^a]: I dare to use IoC Container and DI Container differently in this post because constructor injection is a kind of Dependency Injection but not Inversion of Control.
+
