@@ -54,7 +54,7 @@ Figure 5 and 6 shows the difference between the case of using DI Container and t
 ![Use DI](./origami_05.png)
 ![Use Constructor Injection](./origami_06.png)
 
-I will not go into the pros and cons of the use of the DI Container itself, as this is not the purpose of this post.
+I will not address the pros and cons of the use of the DI Container itself, as this is not the purpose of this post.
 
 #### Application Layer
 
