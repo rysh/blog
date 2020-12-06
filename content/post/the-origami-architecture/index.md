@@ -1,7 +1,7 @@
 --- 
 title: "The Origami Architecture"
 date: 2020-12-05T03:05:00+09:00
-Description: "The Origami Architecture - a nudge to emergent design in software development -" 
+Description: "The Origami Architecture - a nudge to emergent design in software development and awesome testing -" 
 Tags: ['software architecture','agile software development','refactoring','emergent design','unit test']
 Categories: ['software architecture']
 DisableComments: false

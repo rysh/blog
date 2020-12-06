@@ -20,4 +20,4 @@ And I love Scala and Rust.
 
 Here is the article I would most recommend right now.
 
-- [The Origami Architecture - a nudge to emergent design in software development -](https://blog.rysh.tech/post/the-origami-architecture/)
+- [The Origami Architecture - a nudge to emergent design in software development and awesome testing -](https://blog.rysh.tech/post/the-origami-architecture/)
