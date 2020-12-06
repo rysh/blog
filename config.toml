@@ -60,8 +60,8 @@ url = "https://github.com/rysh"
   identifier = "posts"
   url = "/posts/"
 
-#  [[menu.main]]
-#  name = "About"
-#  weight = 300
-#  identifier = "about"
-#  url = "/about/"
+  [[menu.main]]
+  name = "About"
+  weight = 300
+  identifier = "about"
+  url = "/about/"
