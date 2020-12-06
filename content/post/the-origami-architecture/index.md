@@ -7,6 +7,8 @@ Categories: ['software architecture']
 DisableComments: false
 ---
 
+Do you feel that you know the importance of continuous refactoring, but you haven't been able to take many actions?  Or do you think that you write unit tests, but the effort is not worth it because of the difficulty in maintaining existing tests? This post is for such people to read.
+
 I have been applying [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_¥(software¥)) and [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) to my work for the past few years. Over time, I found a [pattern](https://en.wikipedia.org/wiki/Software_design_pattern "software design pattern") that produced some significant effects that were not present in the original ones. I called it a kind of clean architecture for a while, , but since the differences have become so large that it's hard to communicate verbally easily, I decided to give it a name and explain it.
 
 This architecture can coexist with its two predecessor architectures, and its features can be obtained intact with the following new benefits.
