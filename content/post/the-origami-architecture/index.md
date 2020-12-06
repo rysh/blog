@@ -86,7 +86,7 @@ Of course, the refactoring alone does not complete a great model, and to mature 
 
 This effect of The Origami Architecture is a concrete and reproducible method of emergent design that is often mentioned in agile development.
 
-#### Relationship of IoC Container and testability
+#### Simplify unit tests complected by IoC Container
 
 I will explain the difference between using IoC Container and using constructor injection for unit tests. In unit testing, we typically pass input data to the Logic to be tested and assert the output; if we use IoC Container and there is no referential transparency, we must also handle [test spies](https://en.wikipedia.org/wiki/Test_double#Types_of_test_doubles "test spy, a kind of test double") and [test stubs](https://en.wikipedia.org/wiki/Test_stub "test stub, a kind of test double") (Figure 8). In real-world development, we often spent most of the testing effort creating test spies and test stubs using mock libraries.
 
