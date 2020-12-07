@@ -6,7 +6,7 @@ DisableComments: true
 ---
 
 
-I want to share software development knowledge based on experience and practice after years of doing thousands of refactorings and tens of thousands of lines of coding per year.
+I want to share my knowledge of software development based on experience and practice, having done tens of thousands of coding lines and thousands of refactorings per year over the years.
 
 I use Twitter a lot, so feel free to talk to me.
 I usually tweet in Japanese, but if you speak in English, I will respond in English.
