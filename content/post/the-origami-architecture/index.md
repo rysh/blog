@@ -1,6 +1,7 @@
 --- 
 title: "The Origami Architecture"
 date: 2020-12-05T03:05:00+09:00
+lastmod: 2020-12-17T14:00:00+09:00
 Description: "The Origami Architecture - a nudge to emergent design in software development and awesome testing -" 
 Tags: ['software architecture','agile software development','refactoring','emergent design','unit test']
 Categories: ['software architecture']
@@ -67,13 +68,18 @@ I will not address the pros and cons of the use of the IoC Container itself, as 
 #### Application Layer
 
 The Application layer is the boundary between the side-effects and the non-side-effects part. The Application layer does not do any processing with side effects, but it loses referential transparency because of side-effects called in the infrastructure layer. I prefer to manage concurrency and transactions here.
+Extracting the port part from the application of hexagonal architecture would be The port part extracted from the hexagonal architecture's applications would be the same as the origami architecture's applications.
 
 #### Domain Layer
 
 Domains must have referential transparency properties. [Plain Old Objects](https://en.wikipedia.org/wiki/Plain_old_Java_object "Plain old objects is non-Java POJO") pattern is also good. To ensure the elimination of external dependencies, you can restrict the direction of dependencies by dividing the project. Separating the application layer and the infrastructure layer is fine if there is a rational reason to do so, but I don't feel much need to do so.
+When I try to start coding, I begin at domain layers. And when I find a side effect, I refactor it.
+Newborn codes, like undifferentiated cells, and code that is left over after business rules have been aggregated into classes, can belong to the domain layer. I refactor them at the right time.
+I prefer to keep as much code as possible in the domain that has referential transparency.
 
 #### Usecase
-Extracting the port part from the application of hexagonal architecture would be the same as an application of origami architecture; the rest is called the domain. The application and the use case layer of The Clean Architecture are in a similar position, but I think they are two different things. The application belongs to the infrastructure layer, and the use cases belong to the domain layer.
+It is an option, not a requirement. If you want to reflect the concept of use-cases in your code, you should not define them for each subsystem but decide where it is reasonable to define use-cases and test them in the whole system.
+In Origami Architecture, use-cases can belong to a domain layer or an Infrastructure layer. If they are part of a domain, Abstract Factory or Builder patterns enable codes to express use-case. If you want to write use cases procedurally and make them dependent on DB access, you can put them in the Infrastructure layer.
 
 ### How the Benefits Occur
 #### How to generate nudges that improve the design
@@ -84,7 +90,7 @@ It mainly appears in the application layer. In fetching all the data and generat
 
 However, organizing the side-effects into a bent structure, data clumps are formed when the dependent data passes through the bent part (the Application layer). The pattern of appearance of data clumps becomes a signal to improve models. This effect automatically works if we refactor normally without enforcing coding rules, reviews checklists, etc.
 
-Of course, the refactoring alone does not complete a great model, and to mature the model, it needs to be repeatedly analyzed, abstracted, and reconfigured. But code smells are clear signals of the need for redesign and a trigger to begin to consider redesigning. Although it has been said for many years that repeated analysis and refactoring is an integral part of creating good software, only a few organizations are able to do so because most of them don't have enough resources to find out what to improve and when to do it. Supporse improvement is not part of the business process; In that case, even if one developers find improvement points, they will be put on the back burner and forgotten in the priority of other projects. Therefore, triggers must occur continuously in a specific place, and if they are known, we can and should incorporate them into the process.
+Of course, the refactoring alone does not complete a great model, and to mature the model, it needs to be repeatedly analyzed, abstracted, and reconfigured. But code smells are clear signals of the need for redesign and a trigger to begin to consider redesigning. Although it has been said for many years that repeated analysis and refactoring is an integral part of creating good software, only a few organizations are able to do so because most of them don't have enough resources to find out what to improve and when to do it. Supporse improvement is not part of the business process; In that case, even if an individual developer finds improvement points, they will be put on the back burner and forgotten in the priority of other projects. Therefore, triggers must occur continuously in a specific place, and if they are known, we can and should incorporate them into the process.
 
 This effect of The Origami Architecture is a concrete and reproducible method of emergent design that is often mentioned in agile development.
 
