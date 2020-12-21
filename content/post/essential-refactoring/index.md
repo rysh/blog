@@ -35,7 +35,7 @@ Good names improve understandability and ease of change. They also eliminate man
 Nnames should be contextual, such as package name, class name, method name. It makes sense even if you remove unnecessary qualifiers.  
 You should check names both from the perspective of describing the internal implementation and calling the API from outside. It is perfect if there is no discomfort or inconsistency.  
 In the local scope, short variable names are sometimes acceptable.  
-Readable Code documented well about these topics, and I recommend it.
+[The Art of Readable Code](https://www.oreilly.com/library/view/the-art-of/9781449318482/) documented well about these topics, and I recommend it.
 
 #### Extract
 There are several types of Extract: variables, methods, functions, classes. IDE shortcuts may be separate for each.  
@@ -64,7 +64,7 @@ If you are a novice engineer or a person who has not done TDD, you should try th
 When refactoring, use the refactoring feature of the IDE. Humans make mistakes, but machines do not. Errors will occur due to an increase even if the probability of mistakes is small when you change a part referenced a lot or apply many patterns on top of each other. You can reduce the checking effort considerably if you are sure that the behavior will not change after refactoring, but you will have to prepare more extensive tests for it if you are not sure.  
 The accumulation of trust is also essential when making organizational decisions. If you refactor a lot and there are few bugs, there will be less resistance to refactoring within that organization.  
 It is also helpful to have static analysis tools such as Formatter and Linter automatically applied. Formatter not only improves readability but also reduces the diffs that occur when refactoring. Linter can give you ideas of refactoring for best practices and refactoring to avoid pit holes.  
-It is also a good idea to use an automated code review tool like SonarQube, CodeGuru, or CodeScene if possible.
+It is also a good idea to use an automated code review tool like [SonarQube](https://www.sonarqube.org/), [CodeGuru](https://aws.amazon.com/codeguru/), or [CodeScene](https://codescene.io/) if possible.
 
 
 ### Finally
