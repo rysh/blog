@@ -10,7 +10,7 @@ draft: false
 ---
 
 Have you ever done refactoring, but the code is broken and doesn't work properly anymore?
-Or maybe you know that the code is terrible, but you don’t know how to refactor it, or perhaps you feel that the cost is too high for the benefits of refactoring. Many of these are caused by inexperience with the basics of refactoring. Code smells and design patterns are useful refactoring techniques, but first, you should cover some fundamental processes and principles. In this post, I wrote the basics that you will need before moving on to advanced steps. It is like, in soccer, dribbling, passing, and trapping.
+Or maybe you know that the code is terrible, but you don’t know how to refactor it, or perhaps you feel that the cost is too high for the benefits of refactoring. Many of these are caused by inexperience with the basics of refactoring. Code smells and design patterns are useful refactoring techniques, but first, you should cover some fundamental processes and principles. In this post, I wrote the basics that you will need before moving on to advanced steps. It's like dribbling, passing, and trapping in soccer, and it's still necessary even when you start using advanced techniques and tactics beyond that.
 
 For the sake of beginners, let's take a look at the definition and purpose of refactoring.
 
