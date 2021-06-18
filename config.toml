@@ -20,6 +20,7 @@ customCss = []
 customJs = []
 mainSections = ["post"]
 images = ["images/site-feature-image.png"]
+displayMode = "dark"
 
 ## Math settings
 [params.math]

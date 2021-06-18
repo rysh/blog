@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{- site.Language.Lang -}}" data-theme="{{- .Site.Params.displayMode -}}">
+<html  dir="{{ .Site.Language.LanguageDirection | default "ltr" }}" lang="{{- site.Language.Lang -}}" data-theme="{{- .Site.Params.displayMode -}}">
 {{- partial "head.html" . -}}
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -18,6 +18,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 {{- partial "footer.html" . -}}
+{{- if (eq .Site.Params.simpleAnalytics.enable true) -}}
+    {{- partial "analytics/simpleanalytics.html" . -}}
+{{- end -}}
 </body>
 
 </html>
