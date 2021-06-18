@@ -59,10 +59,16 @@ url = "https://github.com/rysh"
   name = "Posts"
   weight = 200
   identifier = "posts"
-  url = "/posts/"
+  url = "/post/"
+
+  [[menu.main]]
+  name = "ja"
+  weight = 300
+  identifier = "ja"
+  url = "/ja/"
 
   [[menu.main]]
   name = "About"
-  weight = 300
+  weight = 400
   identifier = "about"
   url = "/about/"
