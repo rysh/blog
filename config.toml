@@ -45,6 +45,16 @@ title = "GitHub"
 url = "https://github.com/rysh"
 
 
+[en]
+contentDir = "content/"
+languageName = "English"
+languageCode = "en-US"
+
+[ja]
+contentDir = "content/ja"
+languageName = "Japanese"
+languageCode = "ja-JP"
+
 ## Menu items
 
 [menu]
