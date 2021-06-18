@@ -44,8 +44,6 @@ icon = "fab fa-github"
 title = "GitHub"
 url = "https://github.com/rysh"
 
-[minify]
-disableJSON = true
 
 ## Menu items
 
