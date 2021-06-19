@@ -31,19 +31,19 @@ Unfortunately, the diagrams I'm going to use to explain this are two-dimensional
 
 Figure 1 is an ordinary program with side effects scattered throughout the graph. Think of these [side effects](https://en.wikipedia.org/wiki/Side_effect_¥(computer_science¥) "side effects in computer science") as access to external resources. The side-effects are often dependent on the abstraction using [IoC Container](https://en.wikipedia.org/wiki/Dependency_injection "Dependency Injection") and sometimes isolated from the implementation according to [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle "Dependency Inversion Principle in SOLID Principles")[^a], and we can replace them. But there is no [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency "referential transparency in functional programming") here.
 
-{{< imgproc "origami_01.png" Fit "480x400" "alt='program with side effects'" ""/>}}
+{{< imgproc "origami_01.webp" Fit "480x400" "alt='program with side effects'" ""/>}}
 
 So, we widen the area that guarantees referential transparency as much as possible. We divide it into two parts: one describing with side-effects and the other with referential transparency. And we minimize junctions between reference-transparent and non-reference-transparent regions. (Figure 2)
 
-{{< imgproc "origami_02.png" Fit "480x400" "alt='arranged program'" ""/>}}
+{{< imgproc "origami_02.webp" Fit "480x400" "alt='arranged program'" ""/>}}
 
 The part that does not have referential transparency is the Adaptor in Hexagonal Architecture or the infrastructure layer of The Clean Architecture. The area with referential transparency goes to the Application in Hexagonal Architecture or the domain layer of The Clean Architecture. (Figure 3)
 
-{{< imgproc "origami_03.png" Fit "480x400" "alt='layered program'" ""/>}}
+{{< imgproc "origami_03.webp" Fit "480x400" "alt='layered program'" ""/>}}
 
 So, the junction is the Application layer, and the infrastructure-independent part with referential transparecy is the domain logic. (Figure 4)
 
-{{< imgproc "origami_04.png" Fit "480x400" "alt='with application'" ""/>}}
+{{< imgproc "origami_04.webp" Fit "480x400" "alt='with application'" ""/>}}
 
 ### How to Construct
 
@@ -60,8 +60,8 @@ Then, by using constructor injection without IoC Container, domains gain the pro
 
 Figure 5 and 6 shows the difference between the case of using IoC Container and the case of using constructor injection in a sequence diagram.
 
-{{< imgproc "origami_05.png" Fit "480x400" "alt='Use IoC Container'" ""/>}}
-{{< imgproc "origami_06.png" Fit "480x400" "alt='Use Constructor Injection'" ""/>}}
+{{< imgproc "origami_05.webp" Fit "480x400" "alt='Use IoC Container'" ""/>}}
+{{< imgproc "origami_06.webp" Fit "480x400" "alt='Use Constructor Injection'" ""/>}}
 
 I will not address the pros and cons of the use of the IoC Container itself, as this is not the purpose of this post.
 
@@ -86,7 +86,7 @@ In Origami Architecture, use-cases can belong to a domain layer or an Infrastruc
 
 It mainly appears in the application layer. In fetching all the data and generating the domain objects, code smells of Data Clumps (Martin Fowler's Refactoring) occur when the model is not mature enough. Refactoring them, models mature. It is usually tough to find such a connection, even if there are two positively related and frequently used models in two parts of the graph at the same time (Figure 7). 
 
-{{< imgproc "origami_07.png" Fit "480x400" "alt='interactions in ordinary program'" ""/>}}
+{{< imgproc "origami_07.webp" Fit "480x400" "alt='interactions in ordinary program'" ""/>}}
 
 However, organizing the side-effects into a bent structure, data clumps are formed when the dependent data passes through the bent part (the Application layer). The pattern of appearance of data clumps becomes a signal to improve models. This effect automatically works if we refactor normally without enforcing coding rules, reviews checklists, etc.
 
@@ -98,16 +98,16 @@ This effect of The Origami Architecture is a concrete and reproducible method of
 
 I will explain the difference between using IoC Container and using constructor injection for unit tests. In unit testing, we typically pass input data to the Logic to be tested and assert the output; if we use IoC Container and there is no referential transparency, we must also handle [test spies](https://en.wikipedia.org/wiki/Test_double#Types_of_test_doubles "test spy, a kind of test double") and [test stubs](https://en.wikipedia.org/wiki/Test_stub "test stub, a kind of test double") (Figure 8). In real-world development, we often spent most of the testing effort creating test spies and test stubs using mock libraries.
 
-{{< imgproc "origami_08.png" Fit "480x400" "alt='UT with IoC Container'" ""/>}}
+{{< imgproc "origami_08.webp" Fit "480x400" "alt='UT with IoC Container'" ""/>}}
 
 
 We no longer need to use test spies and test stubs because we used constructor injection. (Figure 9)
 
-{{< imgproc "origami_09.png" Fit "480x400" "alt='UT with Constructor Injection'" ""/>}}
+{{< imgproc "origami_09.webp" Fit "480x400" "alt='UT with Constructor Injection'" ""/>}}
 
 Unit tests are more effective and easier to maintain when you write meaningful, granular, and MECE test cases. When you have nested logics, as in Figure 10, referential transparency gives you the freedom to choose where to create your tests without worrying about the increasing efforts.
 
-{{< imgproc "origami_10.png" Fit "480x400" "alt='Nested Logic'" ""/>}}
+{{< imgproc "origami_10.webp" Fit "480x400" "alt='Nested Logic'" ""/>}}
 
 In a program with mixed side effects, test spies and test stubs change with each other as you change the test position, and the effort to deal with mock libraries increases significantly. Therefore, such tests are left unmaintained properly and doomed to become technical debts.
 

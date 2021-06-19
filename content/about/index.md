@@ -15,7 +15,7 @@ I usually tweet in Japanese, but if you speak in English, I will respond accordi
 I'm not very good at English, so please forgive me if I'm wrong. I would be happy to point out any mistakes.
 
 
-{{< imgproc "ishibashi_ryuhei.png" Fit "480x400" "alt='Ishibashi Ryuhei'" ""/>}} I work at a Japanese startup and have extensive experience in agile software development, legacy code improvement, and re-architecture.
+{{< imgproc "ishibashi_ryuhei.webp" Fit "480x400" "alt='Ishibashi Ryuhei'" ""/>}} I work at a Japanese startup and have extensive experience in agile software development, legacy code improvement, and re-architecture.
 And I love Scala and Rust.
 
 Here is the article I would most recommend right now.
