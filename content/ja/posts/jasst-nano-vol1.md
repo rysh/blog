@@ -1,6 +1,7 @@
 ---
 title: "QA素人がゼロからQA組織を立ち上げる"
 date: 2021-06-19T09:00:00+09:00
+lastmod: 2021-07-03T19:00:00+09:00
 Description: "「QA素人がゼロからQA組織を立ち上げる」というテーマでJaSST nano vol.1 に登壇しました" 
 Tags: ['QA','Organization','Recruitment']
 Categories: ['Talks']
@@ -9,11 +10,13 @@ draft: false
 [JaSST nano vol.1](https://jasst-nano.connpass.com/event/215100/)にて「QA素人がゼロからQA組織を立ち上げるの」というテーマで登壇しました。  
 DXや内製化で開発チームを作ったもののQAの知見がなく効果的なアプローチがわからないという方の参考になればと思っています。
   
-{{< google-slide "https://docs.google.com/presentation/d/e/2PACX-1vTyoZgIvVanR_PlUuXnZ9cu5mvikQSooS5Y5OoUBjO4hYApWQlilmODCNrA5_rz2BAIsD7eh4Y_KK_r/embed?start=false&loop=false&delayms=3000" >}}  
-  
+動画:
+{{< youtube "https://www.youtube.com/embed/X4Fxnqq1M7U" >}}  
 
 JaSSTnano wiki [https://www.swtest.jp/index.php?JaSSTnano](https://www.swtest.jp/index.php?JaSSTnano)  
-発表資料: [QA素人がゼロからQA組織を立ち上げるの](https://docs.google.com/presentation/d/1EB8JqgCsZe7tNN0GmeNItsCXCgSfzkxK2nHA_DOT6P8/edit)
+
+スライド:
+{{< google-slide "https://docs.google.com/presentation/d/e/2PACX-1vTyoZgIvVanR_PlUuXnZ9cu5mvikQSooS5Y5OoUBjO4hYApWQlilmODCNrA5_rz2BAIsD7eh4Y_KK_r/embed?start=false&loop=false&delayms=3000" >}}
   
 
 
